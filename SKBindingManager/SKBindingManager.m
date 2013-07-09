@@ -389,7 +389,12 @@ NSString *const BindingInitialValueTo = @"initialTo";
     if (binding.transformation) {
         newValue = binding.transformation(newValue, binding.toObject);
     }
-    [binding.toObject setValue:newValue forKey:binding.toKeyPath];
+    
+    if ([newValue isKindOfClass:[NSNull class]]) {
+        [binding.toObject setValue:nil forKeyPath:binding.toKeyPath];
+    } else {
+        [binding.toObject setValue:newValue forKeyPath:binding.toKeyPath];
+    }
     
     [self activateConnection:bindId];
     
