@@ -64,8 +64,8 @@ NSString *const BindingInitialValueTo = @"initialTo";
 @interface SKBinding : NSObject
 
 @property (strong) NSString *bindId;
-@property (strong) id fromObject;
-@property (strong) id toObject;
+@property (weak) id fromObject;
+@property (weak) id toObject;
 @property (strong) NSString *fromKeyPath;
 @property (strong) NSString *toKeyPath;
 @property BOOL active;
