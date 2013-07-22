@@ -404,6 +404,16 @@ NSString *const BindingInitialValueTo = @"initialTo";
     
 }
 
+- (void)removeBindingById:(NSString *)bindId {
+    [self deactivateConnection:bindId];
+    for (SKBinding *binding in self.bindings) {
+        if ([[binding bindId] isEqualToString:bindId]) {
+            [self.bindings removeObject:binding];
+            break;
+        }
+    }
+}
+
 - (void)removeAllBindings {
     for (SKBinding *binding in self.bindings) {
         if (binding.active) {

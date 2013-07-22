@@ -43,6 +43,7 @@ typedef id (^SKTransformationBlock)(id value, id onObject);
 @property (weak) id<SKBindingProtocol> delegate;
 
 - (BOOL)bind:(NSDictionary *)bindingOptions;
+- (void)removeBindingById:(NSString *)bindId;
 - (void)removeAllBindings;
 
 - (void)deactivateAllBindings;
